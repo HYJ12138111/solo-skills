@@ -1,0 +1,18 @@
+{
+  "name": "solo-skills",
+  "description": "个人 Claude Code 技能包市场",
+  "owner": {
+    "name": "Huang Yujie"
+  },
+  "plugins": [
+    {
+      "name": "solo-skills",
+      "description": "个人 Claude Code 技能包：学术写作、A股数据、投资分析、论文阅读、提示词工程",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Huang Yujie"
+      }
+    }
+  ]
+}
