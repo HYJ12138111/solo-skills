@@ -2,46 +2,47 @@
 
 [中文说明](README.md)
 
-## What It Does
+`nature-downloader` obtains paper full text, PDFs, HTML full text, or auditable download status through open-access routes or the user's own institution-authorized access.
 
-- Helps legally obtain academic full text and PDFs through library access, browser login state, institutional routes, and open-access sources.
+## What To Use It For
 
-## When to Use It
+- Configure a school library, CARSI, EZproxy, WebVPN, or resource-portal entry point for first use.
+- Reuse the user's logged-in Chrome institutional session to download legally accessible PDFs.
+- Try to obtain full text from DOI, title, publisher page, PubMed page, or CNKI Chinese title.
+- Save HTML/text or explain access status when no PDF is available.
+- Report why access failed: no permission, user login required, CAPTCHA, human verification, or missing holdings.
 
-- You have a title, DOI, publisher URL, or database record and need the accessible full text.
-- You need to use CARSI, Web of Science, library proxy, or an existing browser login state.
-- You want an auditable path for how a PDF was obtained.
+## Typical Requests
 
-## Copy-Paste Prompts
+- "Configure my university library entry point so future paper downloads can reuse it."
+- "Use my logged-in Chrome session to download PDFs for these DOIs into the current project."
+- "Use the authorized CNKI route for this Chinese paper; save it if possible and explain why if not."
 
-- `Download the PDF for this DOI using legal library or open-access routes.`
-- `Use my logged-in browser state to obtain this paper from Web of Science or the publisher page.`
-- `Find the open-access version of this paper and save the PDF with metadata.`
+## What You Need To Provide
 
-## Required Inputs
-
-- Paper title, DOI, publisher URL, or database link.
-- Optional institution/library route and browser profile information.
+- DOI, title, paper page link, or Chinese paper title.
+- Library database entry point or logged-in Chrome session.
 - Target output directory and naming preference.
 
-## Expected Outputs
+## Outputs
 
-- Downloaded PDF or access-status report.
-- Source URL, access route, and metadata notes.
-- Failure reason when access is unavailable.
+- Local PDF, HTML, or text file.
+- Access path, save path, and failure reason for each paper.
+- Reusable school-entry configuration, usually at `~/.config/lit-dl/school.json`.
 
-## Dependencies / API Keys / Local Environment
+## Runtime and Dependencies
 
-- Library access or browser login may be required.
-- Chrome or another supported browser may be needed for login-state workflows.
-- The workflow must respect copyright, license, and institutional access rules.
+- First-time setup can use `scripts/configure_school.py` to identify and save resource entry points.
+- Real downloading depends on local browser login state and available web-access / CDP control.
+- Chinese papers default to the user's authorized CNKI or library CNKI entry point.
 
-## FAQ
+## Boundaries
 
-- **Does it bypass paywalls?** No. It uses legal access paths such as library subscriptions, author manuscripts, and open-access copies.
-- **What if no PDF is available?** It should return the best legal access route and explain the blocker.
+- The skill does not bypass paywalls, use mirror sites, break CAPTCHA, or read/export cookies, passwords, localStorage, or session files.
+- Unified identity login, CARSI, CAPTCHA, Cloudflare, SMS, or OTP challenges must be completed by the user in the browser.
+- Without legal access, the skill only reports status and possible alternatives.
 
 ## Related Skills
 
-- [`nature-reader`](../nature-reader/README_EN.md)
-- [`nature-academic-search`](../nature-academic-search/README_EN.md)
+- `nature-reader`: turn obtained PDF/HTML into a full-paper reader.
+- `nature-academic-search`: find target papers from title, DOI, or topic.
