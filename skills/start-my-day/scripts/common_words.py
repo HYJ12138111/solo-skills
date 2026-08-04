@@ -16,9 +16,22 @@ COMMON_WORDS = {
     'under', 'between', 'among', 'during', 'without', 'within',
     'this', 'that', 'these', 'those', 'it', 'its', 'they', 'their',
     'we', 'you', 'your', 'our', 'my', 'his', 'her',
-    # 在论文标题/摘要中过于常见、缺乏区分度的ML术语
+    # ML 术语
     'model', 'learning', 'training', 'data', 'system', 'method',
     'approach', 'framework', 'network', 'algorithm', 'task',
+    # 体育科学通用术语（几乎每篇体育论文都出现）
+    'exercise', 'sport', 'sports', 'physical', 'education',
+    'study', 'research', 'participants', 'performance',
+    'athlete', 'athletes', 'coach', 'coaching', 'teaching',
+    'student', 'students', 'intervention', 'program', 'programme',
+    'group', 'groups', 'analysis', 'effect', 'effects',
+    'based', 'results', 'level', 'levels', 'practice',
+    'development', 'health', 'fitness', 'test', 'tests',
+    'activity', 'activities', 'high', 'low', 'time',
+    'design', 'change', 'changes', 'significant',
+    'related', 'association', 'associations', 'relationship',
+    'factors', 'role', 'difference', 'differences',
+    'review', 'systematic', 'randomized', 'controlled',
 }
 
 
