@@ -1,5 +1,15 @@
 # OpenRouter Image Generation for Manuscript Schematics
 
+## Contents
+
+- [Source](#source)
+- [Safety and scientific integrity](#safety-and-scientific-integrity)
+- [Prompt contract](#prompt-contract)
+- [Script usage](#script-usage)
+- [Recommended defaults](#recommended-defaults)
+- [Follow-up QA](#follow-up-qa)
+
+
 Use this reference only when the user explicitly asks to generate a paper schematic, graphical abstract, mechanism diagram, or concept illustration through OpenRouter / GPT Image 2 / an image-generation API.
 
 Do not use this route for quantitative plots, data panels, heatmaps, microscopy plates, blots, or figure assembly unless the user explicitly wants an AI-generated draft illustration. Keep data-driven figures in the Python or R route.
@@ -88,6 +98,18 @@ python skills/nature-figure/scripts/generate_openrouter_schematic.py \
 ```
 
 The script saves generated files plus `request_metadata.json` in the output directory.
+
+Use another OpenAI-compatible images endpoint (`--api-url`, or `SCHEMATIC_IMAGE_API_URL`) when the user already pays for a gateway instead of OpenRouter. The response shape (`data[].b64_json` or `data[].url`) is the same, so nothing else changes; the endpoint actually called is recorded in `request_metadata.json`. Example with OrcaRouter:
+
+```bash
+export ORCAROUTER_API_KEY="sk-orca-..."
+python skills/nature-figure/scripts/generate_openrouter_schematic.py \
+  --api-url https://api.orcarouter.ai/v1/images/generations \
+  --api-key-env ORCAROUTER_API_KEY \
+  --model openai/gpt-image-2 \
+  --title "Paper title" \
+  --outdir outputs/schematic
+```
 
 ## Recommended defaults
 

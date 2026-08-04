@@ -1,9 +1,7 @@
 ---
 name: researchwrite
 description: |
-  Proposal-first scientific writing pipeline. Three modes (compose/revise/hybrid) with four-layer QA pipeline. Enforces evidence-before-prose, argument-before-sections, and contracts-before-paragraphs.
-version: 1.0.0
-author: 十五 (JL Lab)
+  Proposal-first scientific writing pipeline, installed under the compatibility trigger researchwrite and the repository package name nature-proposal-writer. Use for composing, revising, or auditing research proposals, opening reports, research plans, and evidence-grounded scientific writing. Three modes (compose/revise/hybrid) with a four-layer QA pipeline. Enforces evidence-before-prose, argument-before-sections, and contracts-before-paragraphs.
 license: MIT
 metadata:
   hermes:
@@ -14,6 +12,10 @@ metadata:
 # researchwrite — proposal-first 科研写作 pipeline
 
 受 autonovel（状态机+打分）、professor（动态专家）、brainstorming（入口追问）、anti-AI-writing（语言清理）启发的科研写作状态机。**不是通用"帮我写论文"prompt。**
+
+`researchwrite` 是为兼容既有安装保留的触发名称，仓库目录名仍为
+`nature-proposal-writer`。不要在没有迁移方案时修改 frontmatter 名称。需要初始化模板、
+按条件加载参考资料或执行导出脚本时，先读取 `manifest.yaml`，只加载与当前条件匹配的路径。
 
 ## 核心原则
 
@@ -58,20 +60,35 @@ qa_logs/                  诊断、专家审查、anti-slop、打分记录
 exports/                  最终输出（.md + .docx）
 ```
 
-新建项目时从 `templates/` 取空模板。`references/worked-example-quaternary-proposal.md` 提供了基于通用材料科学领域的完整填写示例。
+新建项目时按 `manifest.yaml` 的 `templates.on_demand` 路由从 `templates/` 取空模板。
+`references/worked-example-quaternary-proposal.md` 提供了基于通用材料科学领域的完整填写示例。
 
 ## Reference 文件索引
 
-公开版本包含四个关键 reference：
+完整 reference 按任务需要加载，不要一次性注入全部文件：
 
-| Reference | 用途 |
-|---|------|
-| `references/evaluation-rubric.md` | 8 维 × 4 锚点评分体系 + 评分流程 |
-| `references/stopping-rules.md` | 迭代循环终止条件 |
-| `references/foundation-files.md` | 建立 foundation 五文件 |
-| `references/validation-checklist.md` | 自动校验清单 |
-
-> 完整 reference 文件（compose/revise/hybrid 模式详解、专家分派、导出归档、综述框架等 12 份）未包含在公开版本中。如需获取，请通过 [GitHub issue](https://github.com/Jiahao8595/research-pipeline/issues) 或邮件联系作者。
+| Reference | 加载时机 |
+|---|---|
+| `references/compose-mode.md` | 模式 = compose（9 步流程） |
+| `references/revise-mode.md` | 模式 = revise（9 步流程） |
+| `references/hybrid-mode.md` | 模式 = hybrid |
+| `references/evaluation-rubric.md` | 使用 8 维 × 4 锚点评分体系时 |
+| `references/research-anti-slop.md` | 清理中文 proposal 的模板化和空泛表达时 |
+| `references/chinese-review-writing-style.md` | 撰写或修订中文综述时 |
+| `references/stopping-rules.md` | 判断继续迭代、拆分范围或停止时 |
+| `references/professor-dispatch.md` | 按失败模式分派动态专家时 |
+| `references/foundation-files.md` | 建立或修复 foundation 五文件时 |
+| `references/project-structure.md` | 初始化项目目录或维护 `state.json` 时 |
+| `references/export-archive.md` | 导出和归档 `.md` / `.docx` 时 |
+| `references/partial-proposal-scope.md` | 分阶段写作并防止范围蔓延时 |
+| `references/ref-renumbering-cascade.md` | 处理参考文献增删和编号级联时 |
+| `references/review-paper-framework.md` | 设计综述论文框架时 |
+| `references/review-critique-methodology.md` | 建立综述的批判性分析时 |
+| `references/validation-checklist.md` | 自动检查主张、引用、编号和可复现性时 |
+| `references/gpt-handoff-revision-brief.md` | 生成跨 agent 修订交接简报时 |
+| `references/within-approved-proposal.md` | 在已批准的 proposal 框架内扩写时 |
+| `references/worked-example-quaternary-proposal.md` | 需要查看完整 foundation 文件填写示例时 |
+| `references/降承诺提案模式.md` | 证据不足，需要降低承诺强度时 |
 
 ## 运行交付
 
@@ -101,7 +118,7 @@ exports/                  最终输出（.md + .docx）
 Gate 2: professor Convener（内容层）
   ├── 论文 → 方法论专家 + 领域专家
   ├── proposal → 可行性专家 + 创新性专家
-  └── 文献reviews → 覆盖面专家 + 批判深度专家
+  └── 文献综述 → 覆盖面专家 + 批判深度专家
   │
   ▼
 Gate 1: avoid-ai-writing 模式 detect-only

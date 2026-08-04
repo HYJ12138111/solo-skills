@@ -1,4 +1,4 @@
-﻿---
+---
 name: nature-statistics
 description: >-
   Audit, revise, or draft manuscript statistical reporting for Nature / high-impact journal submissions. Use when the user asks to check statistical analysis sections, p values, confidence intervals, sample size, biological versus technical replicates, randomization, blinding, multiple-comparison correction, model assumptions, figure legends, Results statistics wording, reviewer comments about statistics, or Chinese academic drafts needing publication-ready Statistical analysis text. Also trigger on general paper-statistics requests such as 统计审查、统计分析小节、统计方法、p值、样本量、重复数、多重比较、置信区间、效应量、图注统计、审稿人统计意见.
@@ -102,6 +102,7 @@ Reporting notes
 | [references/common-failure-modes.md](references/common-failure-modes.md) | You see nested measurements, many comparisons, interaction claims, correlation/regression, outliers, tiny samples, or overstrong p-value language |
 | [references/figure-statistics.md](references/figure-statistics.md) | You are checking figure legends, panel statistics, error bars, stars, box/violin plots, source-data notes, or graphical reporting |
 | [references/reviewer-checklist.md](references/reviewer-checklist.md) | You are finalizing an audit or preparing a reviewer-facing risk summary |
+| [../nature-shared/core/consistency-sweep.md](../nature-shared/core/consistency-sweep.md) | The same statistic appears in more than one place, or interval terminology is in question: one metric at two precisions across table and text, SD/Std abbreviation drift, `confidence interval` used where `prediction interval` is meant, or overlapping error bars described as outperformance |
 
 ## Source hierarchy
 
