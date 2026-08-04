@@ -7,10 +7,10 @@ cd "$REPO_DIR"
 
 echo "[$(date '+%Y-%m-%d %H:%M')] Checking for nature-skills updates..."
 
-git fetch upstream 2>&1
+git fetch upstream-nature 2>&1
 
 LOCAL=$(git rev-parse HEAD)
-UPSTREAM=$(git rev-parse upstream/main)
+UPSTREAM=$(git rev-parse upstream-nature/main)
 
 if [ "$LOCAL" = "$UPSTREAM" ]; then
     echo "  Already up to date."
@@ -20,10 +20,10 @@ fi
 echo "  New commits detected, syncing nature skills..."
 
 # Pull all nature skills from upstream
-NATURE_SKILLS=$(git ls-tree --name-only upstream/main -- skills/nature-* 2>/dev/null | xargs -I{} dirname {} | sort -u || true)
+NATURE_SKILLS=$(git ls-tree --name-only upstream-nature/main -- skills/nature-* 2>/dev/null | xargs -I{} dirname {} | sort -u || true)
 
 if [ -n "$NATURE_SKILLS" ]; then
-    git checkout upstream/main -- skills/nature-* skills/_shared/ 2>&1
+    git checkout upstream-nature/main -- skills/nature-* skills/_shared/ 2>&1
 else
     echo "  No nature skills found in upstream."
     exit 0
